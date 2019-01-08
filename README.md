@@ -4,11 +4,20 @@
 
 ```bash
 docker-compose build
-docker-compose up -d
 ```
 
 ### Start
 
 ```bash
-docker-compose start ssserver
+docker-compose up -d
 ```
+
+### Stop
+
+```bash
+docker-compose stop
+```
+
+## License
+
+MIT
