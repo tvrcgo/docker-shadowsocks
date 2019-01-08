@@ -1,0 +1,16 @@
+
+version: '2'
+services:
+  ssserver:
+    build: .
+    image: ssserver
+    container_name: ssserver
+    restart: always
+    environment:
+      - SS_HOST=0.0.0.0
+      - SS_PORT=8989
+      - SS_PWD=123456
+      - SS_METHOD=rc4-md5
+      - SS_TIMEOUT=500
+    ports:
+      - 8989:8989
