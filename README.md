@@ -1,18 +1,20 @@
 # docker-shadowsocks
 
-### Build
+## Usage
+
+Build
 
 ```bash
 docker-compose build
 ```
 
-### Start
+Start
 
 ```bash
 docker-compose up -d
 ```
 
-### Stop
+Stop
 
 ```bash
 docker-compose stop
