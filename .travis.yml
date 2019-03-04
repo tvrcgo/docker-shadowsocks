@@ -3,8 +3,8 @@ language: ruby
 services:
   - docker
 env:
-  - DOCKER_REGISTRY=docker.io DOCKER_REPO=tvrcgo/shadowsocks
+  - DOCKER_REPO=tvrcgo/shadowsocks
 script:
-  - echo "$DOCKER_PASSWORD" | docker login $DOCKER_REGISTRY -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t "$DOCKER_REGISTRY/$DOCKER_REPO:latest" .
-  - docker push $DOCKER_REGISTRY/$DOCKER_REPO:latest
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t "$DOCKER_REPO:latest" .
+  - docker push $DOCKER_REPO:latest
