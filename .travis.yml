@@ -3,7 +3,7 @@ language: ruby
 services:
   - docker
 env:
-  - DOCKER_REPO=tvrcgo/shadowsocks
+  - DOCKER_REPO=docker.io/tvrcgo/shadowsocks
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t "$DOCKER_REPO:latest" .
