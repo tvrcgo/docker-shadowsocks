@@ -3,7 +3,11 @@ language: ruby
 services:
   - docker
 env:
-  - DOCKER_REGISTRY=registry.cn-shenzhen.aliyuncs.com DOCKER_REPO=tvrcgo/shadowsocks
+  global:
+    - DOCKER_REPO=tvrcgo/shadowsocks
+  matrix:
+    - DOCKER_REGISTRY=docker.io
+    - DOCKER_REGISTRY=registry.cn-shenzhen.aliyuncs.com
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin $DOCKER_REGISTRY
   - docker build -t "$DOCKER_REGISTRY/$DOCKER_REPO:latest" .
