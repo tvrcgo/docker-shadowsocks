@@ -7,7 +7,7 @@ env:
     - DOCKER_REPO=tvrcgo/shadowsocks
   matrix:
     - DOCKER_REGISTRY=docker.io DOCKER_USERNAME=$USER1 DOCKER_PASSWORD=$PWD1
-    - DOCKER_REGISTRY=registry.cn-shenzhen.aliyuncs.com DOCKER_USERNAME=$USER2 DOCKER_PASSWORD=$PWD2
+    - DOCKER_REGISTRY=registry.us-west-1.aliyuncs.com DOCKER_USERNAME=$USER2 DOCKER_PASSWORD=$PWD2
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin $DOCKER_REGISTRY
   - docker build -t "$DOCKER_REGISTRY/$DOCKER_REPO:latest" .
