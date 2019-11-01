@@ -18,9 +18,9 @@ jobs:
         DOCKER_REGISTRY: docker.io
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-        DOCKER_REPO: ${{ secrets.DOCKER_USER }}/shadow:gh-actions-$(date +%s)
+        DOCKER_REPO: ${{ secrets.DOCKER_USER }}/shadow:gh-actions
       run: |
         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin $DOCKER_REGISTRY
-        docker build . --file Dockerfile --tag $DOCKER_REGISTRY/$DOCKER_REPO
-        docker push $DOCKER_REGISTRY/$DOCKER_REPO
+        docker build . --file Dockerfile --tag $DOCKER_REGISTRY/$DOCKER_REPO-$(date +%s)
+        docker push $DOCKER_REGISTRY/$DOCKER_REPO-$(date +%s)
         
