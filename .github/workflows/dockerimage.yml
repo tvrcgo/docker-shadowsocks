@@ -20,7 +20,7 @@ jobs:
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
         DOCKER_REPO: shadow:gh-actions-$(date +%s)
       run: |
-        echo "${{ DOCKER_PASS }}" | docker login -u "${{ DOCKER_USER }}" --password-stdin ${{ DOCKER_REGISTRY }}
-        docker build . --file Dockerfile --tag ${{ DOCKER_REGISTRY }}/${{ DOCKER_REPO }}
-        docker push ${{ DOCKER_REGISTRY }}/${{ DOCKER_REPO }}
+        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin $DOCKER_REGISTRY
+        docker build . --file Dockerfile --tag $DOCKER_REGISTRY/$DOCKER_REPO
+        docker push $DOCKER_REGISTRY/$DOCKER_REPO
         
