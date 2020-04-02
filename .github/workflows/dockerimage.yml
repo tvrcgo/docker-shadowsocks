@@ -13,15 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build and push docker image
-      env:
-        DOCKER_REGISTRY: docker.io
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-        DOCKER_REPO: ${{ secrets.DOCKER_USER }}/shadow
-      run: |
-        REPO_TAG=gh-actions-$(date +%s)
-        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin $DOCKER_REGISTRY
-        docker build . --file Dockerfile --tag $DOCKER_REGISTRY/$DOCKER_REPO:$REPO_TAG
-        docker push $DOCKER_REGISTRY/$DOCKER_REPO:$REPO_TAG
+    - uses: tvrcgo/deploy-to-docker@v0.1
+      with:
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASS }}
+        repository: ${{ secrets.DOCKER_USER }}/shadow
 
