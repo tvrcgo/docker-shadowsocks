@@ -1,9 +1,9 @@
-name: Build shadow image
+name: Docker deployment
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - v*
 
 jobs:
 
@@ -13,10 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - uses: tvrcgo/deploy-to-docker@v0.1
+
+    - name: Docker hub
+      uses: tvrcgo/deploy-to-docker@master
       with:
         registry: docker.io
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
-        repository: ${{ secrets.DOCKER_USER }}/shadow
-
+        repository: ${{ secrets.DOCKER_REPO }}
+        tag: ${{ github.ref_name }}
