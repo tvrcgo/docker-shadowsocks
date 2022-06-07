@@ -22,3 +22,12 @@ jobs:
         password: ${{ secrets.DOCKER_PASS }}
         repository: ${{ secrets.DOCKER_REPO }}
         tag: ${{ github.ref_name }}
+
+    - name: Aliyun Registry
+      uses: tvrcgo/deploy-to-docker@master
+      with:
+        registry: registry.us-west-1.aliyuncs.com
+        username: ${{ secrets.ALIYUN_USER }}
+        password: ${{ secrets.ALIYUN_PASS }}
+        repository: ${{ secrets.DOCKER_REPO }}
+        tag: ${{ github.ref_name }}
