@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/tvrcgo/shadow', '.']
+  args: ['build', '.', '-t', 'gcr.io/tvrcgo/shadow', '-t', 'gcr.io/tvrcgo/shadow:${TAG_NAME}' ]
 images:
-  ['gcr.io/tvrcgo/shadow']
+  ['gcr.io/tvrcgo/shadow', 'gcr.io/tvrcgo/shadow:${TAG_NAME}']
